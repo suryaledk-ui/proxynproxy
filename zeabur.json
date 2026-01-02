@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/zeabur-project-config",
+  "build": {
+    "type": "nodejs",
+    "node_version": "20"
+  },
+  "start": {
+    "command": "node src/index.js"
+  },
+  "ports": [
+    {
+      "port": 8080,
+      "type": "HTTP"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "8080"
+  }
+}

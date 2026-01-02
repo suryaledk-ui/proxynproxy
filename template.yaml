@@ -1,0 +1,42 @@
+apiVersion: zeabur.com/v1
+kind: Template
+metadata:
+  name: Antigravity Claude Proxy
+spec:
+  description: Proxy server to use Antigravity's Claude models with Claude Code CLI
+  icon: https://raw.githubusercontent.com/badri-s2001/antigravity-claude-proxy/main/images/banner.png
+  coverImage: https://raw.githubusercontent.com/badri-s2001/antigravity-claude-proxy/main/images/banner.png
+  tags:
+    - ai
+    - claude
+    - anthropic
+    - proxy
+  readme: |
+    A proxy server that exposes an Anthropic-compatible API backed by Antigravity's Cloud Code,
+    letting you use Claude and Gemini models with Claude Code CLI.
+    
+    After deployment, set your Claude Code CLI environment:
+    ```
+    export ANTHROPIC_BASE_URL=https://your-service.zeabur.app
+    export ANTHROPIC_API_KEY=dummy
+    claude
+    ```
+  services:
+    - name: antigravity-claude-proxy
+      icon: https://raw.githubusercontent.com/badri-s2001/antigravity-claude-proxy/main/images/banner.png
+      template: GIT
+      spec:
+        source:
+          repoURL: https://github.com/badri-s2001/antigravity-claude-proxy
+          branch: main
+        ports:
+          - id: web
+            port: 8080
+            type: HTTP
+        env:
+          NODE_ENV:
+            default: production
+          PORT:
+            default: "8080"
+          DEBUG:
+            default: "false"
